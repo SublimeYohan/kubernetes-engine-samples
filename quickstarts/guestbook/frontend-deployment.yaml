@@ -20,6 +20,7 @@ metadata:
   name: frontend
 spec:
   replicas: 3
+  revisionHistoryLimit: 0 # Default to 10 if not specified
   selector:
     matchLabels:
         app: guestbook
@@ -32,8 +33,8 @@ spec:
     spec:
       containers:
       - name: php-redis
-        #image: us-docker.pkg.dev/google-samples/containers/gke/gb-frontend:v5
-        image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+        image: us-docker.pkg.dev/google-samples/containers/gke/gb-frontend:v5
+        #image: gcr.io/heptio-images/ks-guestbook-demo:0.2
         env:
         - name: GET_HOSTS_FROM
           value: "dns"
